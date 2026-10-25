@@ -396,3 +396,6 @@ button.linea-turno { width: 100%; background: none; border: 0; border-top: 1px s
 .bloque > button.linea-turno:first-child { border-top: 0; }
 .linea-turno.fila-fijo { padding-block: 0; padding-right: 4px; }
 .fila-fijo button.nom { flex: 1; min-height: 48px; }
+.filtros { margin-bottom: 10px; }
+.filtros select { min-width: 0; text-overflow: ellipsis; }
+.buscar input[type="search"] { padding-left: 38px; }
