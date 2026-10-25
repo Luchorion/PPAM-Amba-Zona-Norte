@@ -394,3 +394,5 @@ button.nom.tachado { font-weight: 400; color: var(--muted); }
 button.nom .et { font-size: 0.75rem; color: var(--muted); font-weight: 500; }
 button.linea-turno { width: 100%; background: none; border: 0; border-top: 1px solid var(--line); cursor: pointer; text-align: left; font: inherit; color: inherit; min-height: 48px; }
 .bloque > button.linea-turno:first-child { border-top: 0; }
+.linea-turno.fila-fijo { padding-block: 0; padding-right: 4px; }
+.fila-fijo button.nom { flex: 1; min-height: 48px; }
