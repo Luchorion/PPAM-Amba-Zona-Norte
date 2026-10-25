@@ -387,3 +387,10 @@ label.campo input, label.campo select { background: var(--bg); }
   .hoja-panel { animation: sube 0.18s ease-out; }
   @keyframes sube { from { transform: translateY(24px); opacity: 0.6; } to { transform: none; opacity: 1; } }
 }
+
+/* ---------- enlaces internos ---------- */
+button.nom { background: none; border: 0; padding: 0; text-align: left; cursor: pointer; font: inherit; font-weight: 500; color: inherit; min-height: 44px; display: flex; flex-direction: column; justify-content: center; }
+button.nom.tachado { font-weight: 400; color: var(--muted); }
+button.nom .et { font-size: 0.75rem; color: var(--muted); font-weight: 500; }
+button.linea-turno { width: 100%; background: none; border: 0; border-top: 1px solid var(--line); cursor: pointer; text-align: left; font: inherit; color: inherit; min-height: 48px; }
+.bloque > button.linea-turno:first-child { border-top: 0; }
