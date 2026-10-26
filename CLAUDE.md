@@ -2,7 +2,7 @@
 
 App web para teléfono que usa **un solo coordinador** para organizar los turnos del exhibidor de publicaciones (carrito de los testigos de Jehová) en la **estación Boulogne**, todos los sábados.
 
-La versión actual es **un único archivo**, `index.html` (HTML + CSS + JS vanilla, sin build). Se hizo como artifact de Claude, por eso no usa frameworks ni `alert()`/`confirm()`/`prompt()`: todas las confirmaciones están dentro de la página.
+Está publicada en **Vercel + Supabase** (repo `Luchorion/PPAM-Amba-Zona-Norte`). Es Next.js, pero la app en sí es JS vanilla sin React: arma el HTML con texto y redibuja `#app` (ver "Estructura del código"). No usa `alert()`/`confirm()`/`prompt()`: todas las confirmaciones están dentro de la página. `index.html` es la versión original de una sola página y quedó solo como referencia histórica.
 
 ---
 
@@ -176,17 +176,12 @@ Hubo un primer esqueleto Next.js + Supabase (`exhibidores.zip`), pero está **de
 - Tipografías: **Onest** (texto) e **IBM Plex Mono** (horas, fechas y números), desde Google Fonts.
 - Objetivos táctiles de 44px o más. Sin scroll horizontal a 390px de ancho.
 
-## Estructura del código (`index.html`)
+## Estructura del código
 
-Un IIFE con estado global y `render()`, que reconstruye `#app` con `innerHTML`. Los eventos se delegan en `#app` mediante atributos `data-act` (click, input y submit). Secciones del script:
+- `app/`: Next.js mínimo. `Exhibidor.js` solo monta el contenedor `#app` y llama a `iniciar()`. `globals.css`: todos los estilos, por secciones.
+- `lib/exhibidor.js`: la app. Estado en variables, `render()` reconstruye `#app` con `innerHTML`; los botones llevan `data-act` y la tabla `acciones` tiene una función por cada uno. Secciones: estado, avisos, consultas, operaciones, piezas de UI, una por pantalla (Sábados, Fijos, Resumen, Hermanos lista/ficha/formulario), hoja de búsqueda, render, acciones, eventos, historial (botón atrás), gestos, carga.
+- `lib/constantes.js` (turnos, textos, íconos), `lib/fechas.js`, `lib/texto.js` (escapado, nombres, búsqueda), `lib/reglas.js` (estado de un turno), `lib/datos.js` (forma de los datos, ejemplo y migración).
+- `lib/almacen.js`: guarda en Supabase (diff por filas) o en localStorage si faltan las variables.
+- `supabase/migrations/`: esquema de la base.
 
-- datos y migración
-- búsqueda
-- reglas
-- fechas
-- operaciones
-- piezas de UI
-- vistas: `vistaSabados`, `vistaFijos`, `vistaResumen`, `vistaLista`, `vistaFicha`, `vistaForm`
-- hoja de búsqueda (`picker`)
-- textos de aviso (`textoCancelacion`)
-- eventos
+Para cambios de pantalla, conviene comparar antes/después en una copia en modo localStorage (sin tocar la base real).
