@@ -442,3 +442,64 @@ button.linea-turno { width: 100%; background: none; border: 0; border-top: 1px s
 .guardado.ok { color: var(--ok); }
 button.nom .tachado { text-decoration: line-through; color: var(--muted); font-weight: 400; }
 button.nom .tachado + .et { color: var(--err); font-weight: 600; }
+
+/* ---------- mejoras de UI (2) ---------- */
+html, body { overscroll-behavior-y: contain; }
+.top-btn.sec { background: var(--surface); color: var(--accent); border: 1px solid var(--line); }
+
+/* tira de fechas: barra de estado y separador de meses */
+.dia .dia-dot { width: 22px; height: 4px; border-radius: 2px; margin-top: 6px; }
+.dia .dia-dot.susp { border-radius: 2px; }
+.mes-sep { flex: 0 0 1px; align-self: stretch; margin: 6px 2px; background: var(--line); }
+
+/* selector 1er…5to con estado */
+.sem .dia-dot { width: 18px; height: 3px; border-radius: 2px; margin-top: 3px; }
+.sem { min-height: 54px; }
+
+/* ficha y formulario */
+.btn.borrar { margin-top: 16px; }
+.barra-guardar {
+  position: sticky; bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px)); z-index: 6;
+  margin: 2px -16px 0; padding: 10px 16px; background: var(--bg); border-top: 1px solid var(--line);
+}
+
+/* Resumen: cada horario es un enlace */
+div.fila-pend { cursor: default; }
+button.pend-fecha {
+  background: none; border: 0; padding: 0; text-align: left; cursor: pointer; color: inherit; font: inherit;
+  font-family: var(--font-mono); min-height: 44px; justify-content: center;
+}
+button.pchip { font: inherit; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600; min-height: 36px; padding: 0 10px; cursor: pointer; }
+
+/* silueta de carga */
+.esq { background: var(--sunken); border-radius: 14px; margin-bottom: 10px; }
+.esq-tit { height: 44px; width: 60%; margin-top: 18px; margin-bottom: 14px; }
+.esq-fechas { height: 78px; }
+.esq-turno { height: 120px; }
+@media (prefers-reduced-motion: no-preference) {
+  .esq { animation: latido 1.2s ease-in-out infinite; }
+  @keyframes latido { 50% { opacity: 0.55; } }
+}
+
+/* bajar para actualizar */
+.tirar {
+  position: fixed; left: 50%; top: calc(env(safe-area-inset-top, 0px) + 8px); z-index: 25;
+  transform: translate(-50%, -60px); padding: 8px 14px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--line); color: var(--accent);
+  font-size: 0.85rem; font-weight: 600; opacity: 0; pointer-events: none; transition: opacity 0.15s;
+}
+.tirar.visible { opacity: 1; transform: translate(-50%, 0); }
+
+/* letra más legible en textos chicos */
+.eyebrow { font-size: 0.76rem; }
+.dia-mes { font-size: 0.74rem; }
+.dia-n { font-size: 0.76rem; }
+.sem small { font-size: 0.76rem; }
+.nav-btn { font-size: 0.8rem; }
+.estado { font-size: 0.86rem; }
+.rol { font-size: 0.8rem; }
+.res-info, .res-tag { font-size: 0.84rem; }
+.tile-det { font-size: 0.86rem; }
+.pend-fecha small { font-size: 0.82rem; }
+.chip { font-size: 0.82rem; }
+.hora span { font-size: 0.84rem; }
