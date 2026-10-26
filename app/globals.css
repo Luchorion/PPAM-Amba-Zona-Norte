@@ -1,21 +1,25 @@
+/* Paleta: azul marino, celeste y mostaza (tonos apagados). */
 /* App de una columna para teléfono: barra superior con el título de la sección, contenido, barra de navegación fija abajo. */
 :root {
-  --bg: #f1f3f0;
+  --bg: #f3f7fa;
   --surface: #ffffff;
-  --sunken: #e7ebe6;
-  --fg: #142019;
-  --muted: #5b6a62;
-  --line: #d6ddd7;
-  --accent: #1f5c52;
-  --accent-soft: #dcebe6;
+  --sunken: #e5eef3;
+  --fg: #0a2c3f;
+  --muted: #55707e;
+  --line: #d3e2ea;
+  --accent: #0a3550;
+  --accent-soft: #d8e9f1;
   --accent-fg: #ffffff;
+  --link: #2b7f99;
+  --resalte: #e3b552;
+  --resalte-fg: #0a3550;
   --ok: #1d6b40;
   --ok-bg: #dff0e5;
-  --warn: #8a5900;
-  --warn-bg: #f9edcc;
+  --warn: #9a5a12;
+  --warn-bg: #fbefd9;
   --err: #a7261d;
   --err-bg: #f8e1de;
-  --scrim: rgba(8, 16, 12, 0.5);
+  --scrim: rgba(4, 18, 28, 0.5);
   --font-body: "Onest", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --nav-h: 64px;
@@ -23,41 +27,47 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0f1412;
-    --surface: #18201c;
-    --sunken: #121915;
-    --fg: #e5ece8;
-    --muted: #93a39a;
-    --line: #2a352f;
-    --accent: #7cc4b4;
-    --accent-soft: #1d3530;
-    --accent-fg: #0b1a16;
-    --ok: #7fd3a0;
-    --ok-bg: #173223;
-    --warn: #e9c165;
-    --warn-bg: #352b12;
-    --err: #f4a39a;
-    --err-bg: #3b1f1b;
+    --bg: #0b1d29;
+    --surface: #10293a;
+    --sunken: #0d2232;
+    --fg: #e3eef4;
+    --muted: #93aebc;
+    --line: #1c3b4f;
+    --accent: #9fc6d8;
+    --accent-soft: #183d52;
+    --accent-fg: #0a2a3c;
+    --link: #9fc6d8;
+    --resalte: #d6ad55;
+    --resalte-fg: #0a2a3c;
+    --ok: #86c9a0;
+    --ok-bg: #15322a;
+    --warn: #e0b25e;
+    --warn-bg: #33290f;
+    --err: #ec9f96;
+    --err-bg: #3a2221;
     --scrim: rgba(0, 0, 0, 0.62);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0f1412;
-  --surface: #18201c;
-  --sunken: #121915;
-  --fg: #e5ece8;
-  --muted: #93a39a;
-  --line: #2a352f;
-  --accent: #7cc4b4;
-  --accent-soft: #1d3530;
-  --accent-fg: #0b1a16;
-  --ok: #7fd3a0;
-  --ok-bg: #173223;
-  --warn: #e9c165;
-  --warn-bg: #352b12;
-  --err: #f4a39a;
-  --err-bg: #3b1f1b;
+  --bg: #0b1d29;
+  --surface: #10293a;
+  --sunken: #0d2232;
+  --fg: #e3eef4;
+  --muted: #93aebc;
+  --line: #1c3b4f;
+  --accent: #9fc6d8;
+  --accent-soft: #183d52;
+  --accent-fg: #0a2a3c;
+  --link: #9fc6d8;
+  --resalte: #d6ad55;
+  --resalte-fg: #0a2a3c;
+  --ok: #86c9a0;
+  --ok-bg: #15322a;
+  --warn: #e0b25e;
+  --warn-bg: #33290f;
+  --err: #ec9f96;
+  --err-bg: #3a2221;
   --scrim: rgba(0, 0, 0, 0.62);
   color-scheme: dark;
 }
@@ -525,3 +535,8 @@ button.pchip { font: inherit; font-family: var(--font-mono); font-size: 0.8rem; 
 
 /* ---------- accesibilidad ---------- */
 .solo-lector { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- paleta azul: resalte mostaza y enlaces ---------- */
+.top-btn, .top-btn.sec { background: var(--resalte); color: var(--resalte-fg); border: 0; }
+.sumar, .volver, .accion.acento, .btn-fila, .sumar-chip, .menu-turno button { color: var(--link); }
+.dia[aria-pressed="true"] .dia-dot { box-shadow: 0 0 0 2px var(--resalte); }

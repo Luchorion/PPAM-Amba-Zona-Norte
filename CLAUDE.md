@@ -172,7 +172,7 @@ Hubo un primer esqueleto Next.js + Supabase (`exhibidores.zip`), pero está **de
 - Una columna, con un máximo de ~600px.
 - Barra superior sticky con eyebrow y título.
 - Barra de navegación fija abajo, que respeta `env(safe-area-inset-*)`.
-- Colores como tokens CSS en `:root`, con tema claro y oscuro (`prefers-color-scheme` y `[data-theme]`). Acento verde petróleo. Colores semánticos ok/warn/err, separados del acento.
+- Colores como tokens CSS en `:root`, con tema claro y oscuro (`prefers-color-scheme` y `[data-theme]`). Paleta azul marino / celeste / mostaza en tonos apagados (el usuario pidió "menos neón"). Tokens extra: `--link` para enlaces y `--resalte` (mostaza) para los botones de la barra superior. Colores semánticos ok/warn/err, separados del acento.
 - Tipografías: **Onest** (texto) e **IBM Plex Mono** (horas, fechas y números), desde Google Fonts.
 - Objetivos táctiles de 44px o más. Sin scroll horizontal a 390px de ancho.
 
