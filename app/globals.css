@@ -503,3 +503,25 @@ button.pchip { font: inherit; font-family: var(--font-mono); font-size: 0.8rem; 
 .pend-fecha small { font-size: 0.82rem; }
 .chip { font-size: 0.82rem; }
 .hora span { font-size: 0.84rem; }
+
+/* ---------- animaciones ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .turnos.entra-der { animation: desde-der 0.22s ease-out; }
+  .turnos.entra-izq { animation: desde-izq 0.22s ease-out; }
+  @keyframes desde-der { from { transform: translateX(28px); opacity: 0.3; } to { transform: none; opacity: 1; } }
+  @keyframes desde-izq { from { transform: translateX(-28px); opacity: 0.3; } to { transform: none; opacity: 1; } }
+  .cuerpo.abre .gente, .cuerpo.abre .sumar, .cuerpo.abre .link-susp { animation: abre 0.2s ease-out; }
+  @keyframes abre { from { transform: translateY(-6px); opacity: 0; } to { transform: none; opacity: 1; } }
+  .turno.compacto .resumen-turno { animation: aparece 0.18s ease-out; }
+  @keyframes aparece { from { opacity: 0; } to { opacity: 1; } }
+}
+
+/* ---------- vista de computadora: Hermanos en dos columnas ---------- */
+#app.ancho { max-width: 1120px; }
+.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.col-detalle { position: sticky; top: 0; max-height: 100vh; overflow-y: auto; padding: 0 16px calc(var(--nav-h) + 24px); margin-right: -16px; }
+.col-detalle .top { margin-inline: -16px; }
+.detalle-vacio { color: var(--muted); margin-top: 96px; text-align: center; }
+
+/* ---------- accesibilidad ---------- */
+.solo-lector { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

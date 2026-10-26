@@ -4,3 +4,7 @@ node_modules
 .vercel
 .claude
 supabase/.temp
+
+# Datos personales (no subir)
+PPAM AMBA Norte - Publicadores/
+datos/
