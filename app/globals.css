@@ -399,3 +399,46 @@ button.linea-turno { width: 100%; background: none; border: 0; border-top: 1px s
 .filtros { margin-bottom: 10px; }
 .filtros select { min-width: 0; text-overflow: ellipsis; }
 .buscar input[type="search"] { padding-left: 38px; }
+
+/* ---------- mejoras de UI ---------- */
+.cab-der { display: flex; align-items: center; gap: 2px; flex: 0 0 auto; }
+.mas {
+  width: 44px; height: 44px; margin: -10px -10px -10px 0; border: 0; border-radius: 10px; background: none;
+  color: var(--muted); font-size: 1.25rem; line-height: 1; cursor: pointer;
+}
+.mas[aria-expanded="true"] { background: var(--sunken); color: var(--fg); }
+.menu-turno { display: flex; justify-content: flex-end; margin: 6px 0 2px; }
+.menu-turno button {
+  min-height: 44px; padding: 0 14px; border-radius: 10px; cursor: pointer;
+  background: var(--sunken); border: 1px solid var(--line); font-weight: 600; font-size: 0.88rem;
+}
+.resumen-turno {
+  width: 100%; display: flex; align-items: center; gap: 8px; text-align: left; cursor: pointer;
+  background: none; border: 0; padding: 2px 0; min-height: 44px; color: var(--muted); font-size: 0.92rem;
+}
+.resumen-turno span:first-child { flex: 1; min-width: 0; }
+.turno.compacto .hora { padding: 8px 0; }
+.turno.compacto .hora i { min-height: 4px; }
+.turno.compacto .cuerpo { padding-bottom: 4px; }
+.letra {
+  position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--top-h, 72px)); z-index: 4;
+  margin: 0; padding: 10px 4px 6px; background: var(--bg);
+  font-family: var(--font-mono); font-weight: 600; font-size: 0.85rem; color: var(--accent);
+}
+.faltan { display: flex; flex-wrap: wrap; gap: 6px; margin: -2px 0 12px; }
+.sumar-chip {
+  min-height: 44px; padding: 0 14px; border-radius: 999px; cursor: pointer;
+  border: 1.5px dashed var(--line); background: transparent; color: var(--accent); font-weight: 600; font-size: 0.88rem;
+}
+#picker-cong { background: var(--bg); }
+.tiles.uno { grid-template-columns: 1fr; }
+.guardado {
+  position: fixed; right: 16px; z-index: 15; bottom: calc(var(--nav-h) + 12px + env(safe-area-inset-bottom, 0px));
+  padding: 6px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 600;
+  background: var(--surface); color: var(--muted); border: 1px solid var(--line);
+  opacity: 0; transform: translateY(6px); pointer-events: none; transition: opacity 0.2s, transform 0.2s;
+}
+.guardado.visible { opacity: 1; transform: none; }
+.guardado.ok { color: var(--ok); }
+button.nom .tachado { text-decoration: line-through; color: var(--muted); font-weight: 400; }
+button.nom .tachado + .et { color: var(--err); font-weight: 600; }

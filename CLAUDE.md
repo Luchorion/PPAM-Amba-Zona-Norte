@@ -36,10 +36,11 @@ La versión actual es **un único archivo**, `index.html` (HTML + CSS + JS vanil
 - Tira horizontal con los próximos sábados (el anterior y 12 más). Cada fecha muestra el mes, el día, qué sábado del mes es y un punto de estado: verde si está todo cubierto, amarillo si falta gente, rojo si hay un error de regla, y círculo vacío si está todo suspendido.
 - Resumen del día, por ejemplo: "2 de 4 turnos cubiertos · 1 suspendido · Sin ausencias".
 - Una tarjeta por turno: la hora va en una columna a la izquierda, con el estado y un medidor de 4 cupos.
-  - Cada fijo tiene la etiqueta "Fijo" y un botón **"No viene"**, que lo tacha solo esa fecha y se puede deshacer.
+  - Los turnos cubiertos se ven compactos (solo los nombres); al tocarlos se abren. Un turno donde se está trabajando queda abierto.
+  - Cada fijo tiene un botón **"No viene"** (gris), que lo tacha solo esa fecha y se puede deshacer. Ya no lleva etiqueta "Fijo".
   - Los reemplazos del día tienen la etiqueta "Reemplazo" y una × para quitarlos.
   - **"+ Agregar reemplazo · N libres"** abre el buscador.
-  - **"Suspender por mal clima"** suspende el turno. El turno suspendido se ve punteado y tiene dos botones:
+  - **"Suspender por mal clima"** está en el menú ⋯ de cada turno. El turno suspendido se ve punteado y tiene dos botones:
     - **"Avisar cancelación"** muestra un recuadro con el mensaje y los botones Cerrar y **Copiar**. Copia al portapapeles: **no abre WhatsApp**.
     - **"Reactivar turno"** lo vuelve a habilitar sin perder las personas cargadas.
 
