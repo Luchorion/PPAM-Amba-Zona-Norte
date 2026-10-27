@@ -366,6 +366,20 @@ button.nom .tachado + .et { color: var(--err); font-weight: 600; }
   width: 100%; text-align: left; background: none; border: 0; cursor: pointer; padding: 12px; min-height: 48px;
   display: flex; justify-content: space-between; align-items: center; gap: 8px; color: var(--link); font-weight: 600;
 }
+.con-copiar { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.copiar-chico {
+  min-height: 44px; padding: 0 12px; border-radius: 8px; cursor: pointer;
+  background: var(--sunken); border: 1px solid var(--line); color: var(--link); font-weight: 600; font-size: 0.8rem;
+}
+/* datos al pasar el mouse sobre un nombre */
+.tarjeta {
+  position: fixed; z-index: 40; max-width: 280px; padding: 10px 12px; border-radius: 12px; pointer-events: none;
+  display: none; flex-direction: column; gap: 2px; font-size: 0.86rem; color: var(--muted);
+  background: var(--surface); border: 1px solid var(--line); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+.tarjeta.visible { display: flex; }
+.tarjeta b { color: var(--fg); font-weight: 600; }
+.tarjeta .mono { font-family: var(--font-mono); color: var(--fg); }
 .aviso-borrar { margin-top: 16px; background: var(--err-bg); color: var(--err); border-radius: 12px; padding: 12px; font-size: 0.9rem; }
 .aviso-borrar .dos { margin-top: 10px; }
 
@@ -527,6 +541,9 @@ button.pchip { font: inherit; font-family: var(--font-mono); font-size: 0.8rem; 
   .tf-p .nom { min-height: 34px; }
   .tf-p .x { width: 30px; min-height: 34px; font-size: 1rem; }
   .tf-sumar { background: none; border: 0; padding: 0; min-height: 34px; cursor: pointer; color: var(--link); font-weight: 600; font-size: 0.84rem; }
+  .tf-p[draggable="true"] { cursor: grab; border-radius: 8px; }
+  .tf-p.arrastrando { opacity: 0.4; }
+  .tf-celda.destino { border: 2px solid var(--link); background: var(--accent-soft); }
 
   /* Hermanos: tabla ordenable */
   .tabla-h { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; font-size: 0.92rem; }
@@ -548,6 +565,13 @@ button.pchip { font: inherit; font-family: var(--font-mono); font-size: 0.8rem; 
   .form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 16px; }
   .form .barra-guardar { grid-column: 1 / -1; display: flex; justify-content: flex-end; margin: 0; padding-inline: 0; }
   .form .barra-guardar .btn { min-width: 160px; }
+}
+/* Sábados con "Para resolver" al costado, solo si hay lugar */
+.sab-lado { display: none; }
+@media (min-width: 1300px) {
+  .sab-cols { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 32px; align-items: start; }
+  .sab-lado { display: block; position: sticky; top: 16px; padding-top: 14px; }
+  .sab-lado > .bloque-tit:first-child { margin-top: 6px; }
 }
 /* El celular entra en la tabla solo si hay lugar */
 @media (min-width: 1000px) and (max-width: 1299px) {
@@ -585,6 +609,8 @@ button.pchip { font: inherit; font-family: var(--font-mono); font-size: 0.8rem; 
   .btn-fila { min-height: 42px; }
   .seg label { min-height: 36px; }
   .tag { min-height: 32px; }
+  .copiar-chico { min-height: 30px; padding: 0 10px; }
+  .copiar-chico:hover { border-color: var(--link); }
 }
 
 /* ---------- silueta de carga ---------- */
