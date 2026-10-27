@@ -478,13 +478,13 @@ button.pchip { font: inherit; font-family: var(--font-mono); font-size: 0.8rem; 
 .res-sin { color: var(--muted); padding: 16px 2px; font-size: 0.92rem; }
 
 /* ---------- computadora: Hermanos en dos columnas ---------- */
-#app.ancho { max-width: 1120px; }
-.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+#app.ancho { max-width: 1280px; }
+.split { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 32px; align-items: start; }
 .col-detalle { position: sticky; top: 0; max-height: 100vh; overflow-y: auto; padding: 0 16px calc(var(--nav-h) + 24px); margin-right: -16px; }
 .col-detalle .top { margin-inline: -16px; }
 .detalle-vacio { color: var(--muted); margin-top: 96px; text-align: center; }
 
-/* ---------- computadora: navegación lateral, Resumen en dos columnas y buscador centrado ---------- */
+/* ---------- computadora: navegación lateral, pantallas a lo ancho y buscador centrado ---------- */
 @media (min-width: 1000px) {
   :root { --nav-w: 208px; }
   body { padding-left: calc(var(--nav-w) + 16px); padding-bottom: 32px; }
@@ -506,6 +506,85 @@ button.pchip { font: inherit; font-family: var(--font-mono); font-size: 0.8rem; 
   .hoja { align-items: center; }
   .hoja-panel { max-width: 560px; height: min(640px, 84vh); border-radius: 18px; padding: 14px 16px 12px; }
   .asa { display: none; }
+
+  /* Sábados: todas las fechas a la vista y los turnos en grilla */
+  .fechas { margin-inline: 0; padding: 2px 0 12px; overflow: visible; gap: 6px; }
+  .dia { flex: 1 1 0; width: auto; min-width: 46px; }
+  .turnos { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); align-items: start; }
+
+  /* Fijos: tabla con los 5 sábados del mes */
+  .tabla-fijos { width: calc(100% + 12px); margin: -6px -6px 0; table-layout: fixed; border-collapse: separate; border-spacing: 6px; }
+  .tabla-fijos thead th { text-align: left; vertical-align: bottom; padding: 0 4px 2px; font-size: 0.86rem; font-weight: 600; color: var(--muted); }
+  .tabla-fijos thead th:first-child { width: 56px; }
+  .tabla-fijos thead .dia-dot { display: block; margin-top: 5px; }
+  .tf-hora { vertical-align: top; padding-top: 10px; text-align: center; font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-weight: 600; }
+  .tf-hora span { display: block; color: var(--muted); font-weight: 400; font-size: 0.84rem; }
+  .tf-celda { vertical-align: top; padding: 6px 4px 4px 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; font-size: 0.92rem; }
+  .tf-celda.error { border-color: var(--err); }
+  .tf-celda.vacia { background: transparent; border-style: dashed; }
+  .tf-celda .estado { display: block; font-size: 0.78rem; margin-bottom: 2px; }
+  .tf-p { display: flex; align-items: center; }
+  .tf-p .nom { min-height: 34px; }
+  .tf-p .x { width: 30px; min-height: 34px; font-size: 1rem; }
+  .tf-sumar { background: none; border: 0; padding: 0; min-height: 34px; cursor: pointer; color: var(--link); font-weight: 600; font-size: 0.84rem; }
+
+  /* Hermanos: tabla ordenable */
+  .tabla-h { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; font-size: 0.92rem; }
+  .tabla-h th { padding: 0; text-align: left; background: var(--sunken); border-bottom: 1px solid var(--line); }
+  .tabla-h th button {
+    width: 100%; min-height: 40px; padding: 0 12px; text-align: left; cursor: pointer; background: none; border: 0;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
+  }
+  .tabla-h th[aria-sort] button { color: var(--fg); }
+  .tabla-h td { padding: 4px 12px; border-top: 1px solid var(--line); color: var(--muted); overflow-wrap: anywhere; }
+  .tabla-h tbody tr:first-child td { border-top: 0; }
+  .tabla-h tbody tr { cursor: pointer; }
+  .tabla-h tr.sel td { background: var(--accent-soft); }
+  .tabla-h .nom { flex-direction: row; align-items: center; justify-content: flex-start; gap: 10px; font-weight: 600; color: var(--fg); }
+  .tabla-h .ini { width: 32px; height: 32px; font-size: 0.78rem; }
+  .tabla-h .c-celular { font-family: var(--font-mono); font-size: 0.84rem; white-space: nowrap; }
+
+  /* Formulario de hermano en dos columnas */
+  .form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 16px; }
+  .form .barra-guardar { grid-column: 1 / -1; display: flex; justify-content: flex-end; margin: 0; padding-inline: 0; }
+  .form .barra-guardar .btn { min-width: 160px; }
+}
+/* El celular entra en la tabla solo si hay lugar */
+@media (min-width: 1000px) and (max-width: 1299px) {
+  :root { --nav-w: 184px; }
+  .tabla-h .c-celular { display: none; }
+  /* Fijos más apretado */
+  .tabla-fijos thead th:first-child { width: 40px; }
+  .tf-celda { padding-left: 8px; font-size: 0.86rem; }
+  .tf-p .x { width: 24px; }
+}
+
+/* ---------- con mouse: resaltado al pasar y controles más chicos ---------- */
+@media (hover: hover) and (pointer: fine) {
+  .dia:not([aria-pressed="true"]):hover, .fila-h:hover, .res:hover, .fila-rank:hover, .resumen-turno:hover,
+  .btn-fila:hover, .tabla-h tbody tr:not(.sel):hover td, .tabla-h th button:hover { background: var(--sunken); }
+  .sem:not([aria-pressed="true"]):hover b, .accion:hover, .mas:hover, .link-susp:hover { color: var(--fg); }
+  .x:hover { color: var(--err); }
+  button.nom:hover, .volver:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .sumar:hover, .sumar-chip:hover, .menu-turno button:hover, .tag:not([aria-pressed="true"]):hover, button.pchip:hover { border-color: var(--link); }
+  .tf-sumar:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .btn:hover, .top-btn:hover, .wa:hover { filter: brightness(1.08); }
+
+  input[type="text"], input[type="search"], input[type="tel"], input[type="email"], select { min-height: 40px; }
+  .btn { min-height: 42px; }
+  .agregar-a-lista .btn { min-height: 40px; }
+  .gente li { min-height: 40px; }
+  button.nom, .accion, .x { min-height: 36px; }
+  .x { width: 32px; }
+  .mas { width: 36px; height: 36px; margin: -6px -6px -6px 0; }
+  .sumar, .menu-turno button, .sumar-chip, .resumen-turno { min-height: 36px; }
+  .link-susp { min-height: 30px; }
+  .fila-h { min-height: 52px; padding-block: 8px; }
+  .res { min-height: 48px; }
+  .fila-rank { min-height: 46px; }
+  .btn-fila { min-height: 42px; }
+  .seg label { min-height: 36px; }
+  .tag { min-height: 32px; }
 }
 
 /* ---------- silueta de carga ---------- */
