@@ -484,6 +484,30 @@ button.pchip { font: inherit; font-family: var(--font-mono); font-size: 0.8rem; 
 .col-detalle .top { margin-inline: -16px; }
 .detalle-vacio { color: var(--muted); margin-top: 96px; text-align: center; }
 
+/* ---------- computadora: navegación lateral, Resumen en dos columnas y buscador centrado ---------- */
+@media (min-width: 1000px) {
+  :root { --nav-w: 208px; }
+  body { padding-left: calc(var(--nav-w) + 16px); padding-bottom: 32px; }
+  .nav { top: 0; right: auto; width: var(--nav-w); border-top: 0; border-right: 1px solid var(--line); padding: 16px 12px; }
+  .nav-in { display: flex; flex-direction: column; gap: 4px; height: auto; max-width: none; }
+  .nav-btn { flex-direction: row; justify-content: flex-start; gap: 12px; min-height: 48px; padding: 0 12px; border-radius: 12px; font-size: 0.95rem; }
+  .nav-btn:hover { background: var(--sunken); color: var(--fg); }
+  .nav-ico { width: auto; height: auto; }
+  .nav-btn[aria-current="page"], .nav-btn[aria-current="page"]:hover { background: var(--accent-soft); color: var(--accent); }
+  .nav-btn[aria-current="page"] .nav-ico { background: none; }
+  .toast { left: calc(var(--nav-w) + 16px); bottom: 16px; }
+  .guardado { bottom: 16px; }
+  .barra-guardar { bottom: 0; }
+  .col-detalle { padding-bottom: 24px; }
+
+  .resumen-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+  .resumen-cols > div > .bloque-tit:first-child { margin-top: 6px; }
+
+  .hoja { align-items: center; }
+  .hoja-panel { max-width: 560px; height: min(640px, 84vh); border-radius: 18px; padding: 14px 16px 12px; }
+  .asa { display: none; }
+}
+
 /* ---------- silueta de carga ---------- */
 .esq { background: var(--sunken); border-radius: 14px; margin-bottom: 10px; }
 .esq-tit { height: 44px; width: 60%; margin-top: 18px; margin-bottom: 14px; }
